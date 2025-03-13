@@ -1,9 +1,6 @@
-import sveltePreprocess from "svelte-preprocess";
-import MagicString, {Bundle} from "magic-string";
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import * as path from "path";
-import * as fs from 'node:fs/promises';
 
-/* Make `@import "./whatever.css" scoped;` statements import CSS into the component's CSS scope */
 function importCSSPreprocess() {
   async function importCSS({ content, filename }) {
     function matchAllImports(str) {
@@ -62,7 +59,6 @@ export default {
   // Consult https://github.com/sveltejs/svelte-preprocess
   // for more information about preprocessors
   preprocess: [
-    importCSSPreprocess(),
-    sveltePreprocess(),
+    vitePreprocess(),
   ],
 };

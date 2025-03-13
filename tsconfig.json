@@ -2,27 +2,20 @@
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "target": "esnext",
+    "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "esnext",
+    "module": "ESNext",
     "resolveJsonModule": true,
-    "importsNotUsedAsValues": "error",
     "baseUrl": ".",
     "paths": {
       "~/lib/*": ["src/lib/*"],
       "~/assets/*": ["src/assets/*"],
-      // Importing from other pages is bad practice so only allow imports from popup and manager for popup editor
       "~/entries/popup/*": ["src/entries/popup/*"],
       "~/entries/manager/*": ["src/entries/manager/*"]
     },
-    /**
-     * Typecheck JS in `.svelte` and `.js` files by default.
-     * Disable checkJs if you'd like to use dynamic types in JS.
-     * Note that setting allowJs false does not prevent the use
-     * of JS in `.svelte` files.
-     */
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "esModuleInterop": true
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/**/*.json"]
 }
