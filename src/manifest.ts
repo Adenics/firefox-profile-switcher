@@ -11,12 +11,6 @@ const manifest = {
     scripts: ["src/entries/background/main.ts"],
     persistent: true,
   },
-  // content_scripts: [
-  //   {
-  //     js: ["src/entries/contentScript/primary/main.ts"],
-  //     matches: ["*://*/*"],
-  //   },
-  // ],
   browser_action: {
     default_icon: "icons/icon.svg",
     default_title: "Switch profile",
@@ -38,19 +32,11 @@ const manifest = {
     }
   },
   web_accessible_resources: [
-    /* These resources shouldn't actually be web accessible.
-     * This is actually a hack to make vite-plugin-web-extension compile the HTML file */
     "src/entries/manager/index.html",
     "src/entries/setup/index.html",
     "src/entries/update/index.html",
-
     "src/entries/winfocus/index.html",
   ],
-  // options_ui: {
-  //   chrome_style: false,
-  //   open_in_tab: true,
-  //   page: "src/entries/options/index.html",
-  // },
 };
 
 export function getManifest(): chrome.runtime.ManifestV2 {

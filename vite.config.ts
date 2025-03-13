@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import webExtension from "@samrum/vite-plugin-web-extension";
-import * as path from "path";
+import path from "path";
 import { getManifest } from "./src/manifest";
 
 // https://vitejs.dev/config/
@@ -11,6 +11,7 @@ export default defineConfig(() => {
       svelte(),
       webExtension({
         manifest: getManifest(),
+        watchFilePaths: ["src/manifest.ts"],
       }),
     ],
     optimizeDeps: {
@@ -23,6 +24,14 @@ export default defineConfig(() => {
     },
     define: {
       APP_VERSION: JSON.stringify(process.env.npm_package_version)
+    },
+    build: {
+      minify: 'terser',
+      rollupOptions: {
+        output: {
+          manualChunks: {}
+        }
+      }
     }
   };
 });
